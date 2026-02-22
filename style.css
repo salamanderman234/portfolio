@@ -1,0 +1,211 @@
+:root {
+    --bg-color: #0f0f12; /* Deep charcoal */
+    --text-color: #ffffff;
+    --prompt-color: #00ff41;
+    --keyword-color: #ffff00;
+    --accent-color: #00ff41; 
+    --error-color: #ff0000;
+    --header-bg: #1a1a1a;
+    --font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: radial-gradient(circle at center, #0f0f12 0%, #050505 100%);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.terminal-container {
+    width: 100%;
+    max-width: 950px;
+    height: 85vh;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 255, 65, 0.03);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.terminal-header {
+    background-color: var(--header-bg);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
+
+.terminal-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+    margin-right: 48px;
+}
+
+.terminal-body {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+
+.terminal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 10px;
+}
+
+.output {
+    margin-bottom: 10px;
+}
+
+.line {
+    margin-bottom: 4px;
+    word-break: break-all;
+}
+
+.highlight { color: var(--keyword-color); }
+.accent { color: var(--accent-color); }
+.error { color: var(--error-color); }
+
+a.accent {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a.accent:hover {
+    text-decoration: underline;
+}
+
+.help-list, .ls-list, .skills-list, .contact-list, .social-list, .update-list {
+    margin: 10px 0;
+}
+
+.help-list div, .ls-list div, .skills-list div, .contact-list div, .social-list div, .update-list div {
+    margin: 2px 0;
+}
+
+.summary-text {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: var(--prompt-color);
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+#command-input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 1.1rem;
+    width: 0; /* JS will update this width based on content */
+    min-width: 1ch;
+    outline: none;
+    caret-color: transparent;
+    flex: 0 1 auto;
+}
+
+.input-line::after {
+    content: "";
+    width: 9px;
+    height: 20px;
+    background-color: var(--accent-color);
+    animation: blink 1s infinite;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-left: -3px; /* Slightly adjusted for better alignment */
+}
+
+.input-line.typing::after {
+    display: none;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Custom Output Components */
+.project-card {
+    border-left: 2px solid var(--accent-color);
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.project-title {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.project-desc {
+    font-size: 0.95rem;
+    margin-top: 5px;
+    color: #ccc;
+}
+
+.project-link {
+    margin-top: 8px;
+    font-size: 0.85rem;
+}
+
+.ascii-art {
+    white-space: pre;
+    color: var(--accent-color);
+    font-size: 0.6rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+    .ascii-art { font-size: 0.35rem; }
+    body { padding: 5px; }
+    .terminal-container { height: 95vh; }
+    .terminal-body { font-size: 0.9rem; }
+}
