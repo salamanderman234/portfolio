@@ -211,7 +211,7 @@ const asciiArt = `
 
 window.onload = () => {
     addLine(`<pre class="ascii-art">${asciiArt}</pre>`);
-    addLine('Welcome to my digital terminal. I\'m <span class="accent">Tresna Saputra</span>, a Fullstack Engineer building the future of the web.');
+    addLine('Welcome to my portfolio. I\'m <span class="accent">Tresna Saputra</span>, a Fullstack Engineer building the future of the web.');
     addLine('Type <span class="highlight">\'help\'</span> to see all available commands.');
     commandInput.focus();
 };
